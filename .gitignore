@@ -1,0 +1,5 @@
+.settings
+/com.eclipse.e4.ui.workbench.perspectiveswitcher.parent/.project
+/com.eclipse.e4.ui.workspace.perspectiveswitcher.updatesite/.project
+/org.eclipse.e4.ui.workbench.commands.swt/.classpath
+/org.eclipse.e4.ui.workbench.commands.swt/.project
