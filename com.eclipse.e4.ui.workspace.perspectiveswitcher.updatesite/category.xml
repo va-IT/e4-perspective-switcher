@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <bundle id="org.eclipse.e4.ui.workbench.perspectiveswitcher" version="1.0.0.qualifier">
+      <category name="e4.ui.perspectiveswitcher"/>
+   </bundle>
+   <category-def name="e4.ui.perspectiveswitcher" label="Perspectiveswitcher for Eclipse e4"/>
+</site>
