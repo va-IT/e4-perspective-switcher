@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: %pluginName
+Bundle-Name: Eclipse e4 Perspectiveswitcher
 Bundle-SymbolicName: org.eclipse.e4.ui.workbench.perspectiveswitcher;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.eclipse.e4.ui.workbench.perspectiveswitcher.E4PerspectiveSwitcherActivator
@@ -25,4 +25,3 @@ Export-Package: org.eclipse.e4.ui.workbench.perspectiveswitcher.commands,
  org.eclipse.e4.ui.workbench.perspectiveswitcher.handlers,
  org.eclipse.e4.ui.workbench.perspectiveswitcher.tools
 Bundle-ClassPath: .
-Bundle-Vendor: %providerName
