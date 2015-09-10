@@ -24,6 +24,7 @@ import org.eclipse.e4.ui.workbench.perspectiveswitcher.commands.E4WorkbenchComma
 import org.eclipse.e4.ui.workbench.perspectiveswitcher.commands.E4WorkbenchParameterConstants;
 import org.eclipse.e4.ui.workbench.perspectiveswitcher.handlers.E4WorkbenchHandlerConstants;
 import org.eclipse.e4.ui.workbench.perspectiveswitcher.handlers.ShowPerspectiveHandler;
+import org.eclipse.e4.ui.workbench.perspectiveswitcher.handlers.ShowTextHandler;
 
 public class E4PerspectiveSwitcherProcessor {
 
@@ -53,12 +54,21 @@ public class E4PerspectiveSwitcherProcessor {
 			showPerspectiveCommand.setDescription(E4WorkbenchCommandConstants.PERSPECTIVES_SHOW_PERSPECTIVE$_DESCRIPTION);
 			application.getCommands().add(showPerspectiveCommand);
 			
+			MCommand showTextCommand = commandsFactory.createCommand();
+			showTextCommand.setContributorURI(contributorURI);
+			showTextCommand.setElementId(E4WorkbenchCommandConstants.PERSPECTIVES_SHOW_TEXT);
+			showTextCommand.setCategory(perspectivesCategory);
+			showTextCommand.setCommandName(E4WorkbenchCommandConstants.PERSPECTIVES_SHOW_TEXT$_NAME);
+			showTextCommand.setDescription(E4WorkbenchCommandConstants.PERSPECTIVES_SHOW_TEXT$_DESCRIPTION);
+			application.getCommands().add(showTextCommand);
+			
 			MCommandParameter parameterPerspectiveId = commandsFactory.createCommandParameter();
 			parameterPerspectiveId.setContributorURI(contributorURI);
 			parameterPerspectiveId.setElementId(E4WorkbenchParameterConstants.COMMAND_PERSPECTIVE_ID);
 			parameterPerspectiveId.setName(E4WorkbenchParameterConstants.COMMAND_PERSPECTIVE_ID$_NAME);
 			parameterPerspectiveId.setOptional(E4WorkbenchParameterConstants.COMMAND_PERSPECTIVE_ID$_OPTION);
 			showPerspectiveCommand.getParameters().add(parameterPerspectiveId);
+			showTextCommand.getParameters().add(parameterPerspectiveId);
 			
 			MCommandParameter parameterWindow = commandsFactory.createCommandParameter();
 			parameterWindow.setContributorURI(contributorURI);
@@ -74,12 +84,19 @@ public class E4PerspectiveSwitcherProcessor {
 			parameterNewWindow.setOptional(E4WorkbenchParameterConstants.COMMAND_PERSPECTIVE_NEW_WINDOW$_OPTION);
 			showPerspectiveCommand.getParameters().add(parameterNewWindow);
 			
+			MHandler showPerspectiveHandler = commandsFactory.createHandler();
+			showPerspectiveHandler.setContributorURI(contributorURI);
+			showPerspectiveHandler.setElementId(E4WorkbenchHandlerConstants.PERSPECTIVES_SHOW_PERSPECTIVE);
+			showPerspectiveHandler.setCommand(showPerspectiveCommand);
+			showPerspectiveHandler.setContributionURI(E4PerspectiveSwitcherActivator.getDefault().getResourceURI(ShowPerspectiveHandler.class));
+			application.getHandlers().add(showPerspectiveHandler);
+			
 			MHandler showTextHandler = commandsFactory.createHandler();
 			showTextHandler.setContributorURI(contributorURI);
-			showTextHandler.setElementId(E4WorkbenchHandlerConstants.PERSPECTIVES_SHOW_PERSPECTIVE);
-			showTextHandler.setCommand(showPerspectiveCommand);
-			showTextHandler.setContributionURI(E4PerspectiveSwitcherActivator.getDefault().getResourceURI(ShowPerspectiveHandler.class));
-			application.getHandlers().add(showTextHandler);
+			showTextHandler.setElementId(E4WorkbenchHandlerConstants.PERSPECTIVES_SHOW_TEXT);
+			showTextHandler.setCommand(showTextCommand);
+			showTextHandler.setContributionURI(E4PerspectiveSwitcherActivator.getDefault().getResourceURI(ShowTextHandler.class));
+			application.getHandlers().add(showPerspectiveHandler);
 		}
 	}
 	

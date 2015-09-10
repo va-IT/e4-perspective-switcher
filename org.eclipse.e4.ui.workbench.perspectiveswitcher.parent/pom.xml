@@ -10,7 +10,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<tycho.version>0.23.0</tycho.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<mars-repo.url>http://2217assource01:7070/nexus/content/repositories/releases_mars/</mars-repo.url>
+		<!-- <mars-repo.url>http://2217assource01:7070/nexus/content/repositories/releases_mars/</mars-repo.url> -->
+		<mars-repo.url>http://download.eclipse.org/releases/mars/</mars-repo.url>
 	</properties>
 
 	<repositories>
@@ -69,9 +70,9 @@
 		</plugins>
 	</build>
 	<modules>
-		
+
 		<module>../org.eclipse.e4.ui.workbench.commands.swt</module>
-		
+
 		<module>
 			../org.eclipse.e4.ui.workbench.perspectiveswitcher.updatesite
 		</module>
