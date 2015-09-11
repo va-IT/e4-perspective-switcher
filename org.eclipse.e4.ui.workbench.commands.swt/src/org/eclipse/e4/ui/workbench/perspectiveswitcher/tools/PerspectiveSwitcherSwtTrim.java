@@ -33,8 +33,6 @@ import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.e4.ui.model.application.ui.menu.MToolControl;
 import org.eclipse.e4.ui.workbench.IResourceUtilities;
 import org.eclipse.e4.ui.workbench.UIEvents;
-import org.eclipse.e4.ui.workbench.modeling.EModelService;
-import org.eclipse.e4.ui.workbench.modeling.EPartService;
 import org.eclipse.e4.ui.workbench.perspectiveswitcher.E4WorkbenchMessages;
 import org.eclipse.e4.ui.workbench.perspectiveswitcher.commands.E4WorkbenchCommandConstants;
 import org.eclipse.emf.common.util.URI;
@@ -73,12 +71,6 @@ public class PerspectiveSwitcherSwtTrim implements IPerspectiveSwitcherControl {
 
 	@Inject
 	private Logger logger;
-
-	@Inject
-	private EModelService modelService;
-
-	@Inject
-	private EPartService partService;
 
 	@Inject
 	private ECommandService commandService;
@@ -315,7 +307,7 @@ public class PerspectiveSwitcherSwtTrim implements IPerspectiveSwitcherControl {
 	void openPerspectiveDialog() {
 		ParameterizedCommand command = commandService.createCommand(
 				E4WorkbenchCommandConstants.PERSPECTIVES_SHOW_PERSPECTIVE,
-				Collections.EMPTY_MAP);
+				Collections.emptyMap());
 		handlerService.executeHandler(command);
 	}
 
@@ -547,7 +539,7 @@ public class PerspectiveSwitcherSwtTrim implements IPerspectiveSwitcherControl {
 			public void widgetSelected(SelectionEvent event) {
 				ParameterizedCommand command = commandService.createCommand(
 						E4WorkbenchCommandConstants.PERSPECTIVES_SAVE_AS,
-						Collections.EMPTY_MAP);
+						Collections.emptyMap());
 				handlerService.executeHandler(command);
 			}
 		});
@@ -565,7 +557,7 @@ public class PerspectiveSwitcherSwtTrim implements IPerspectiveSwitcherControl {
 			public void widgetSelected(SelectionEvent event) {
 				ParameterizedCommand command = commandService.createCommand(
 						E4WorkbenchCommandConstants.PERSPECTIVES_RESET,
-						Collections.EMPTY_MAP);
+						Collections.emptyMap());
 				handlerService.executeHandler(command);
 			}
 		});
@@ -583,7 +575,7 @@ public class PerspectiveSwitcherSwtTrim implements IPerspectiveSwitcherControl {
 			public void widgetSelected(SelectionEvent event) {
 				ParameterizedCommand command = commandService.createCommand(
 						E4WorkbenchCommandConstants.PERSPECTIVES_CLOSE,
-						Collections.EMPTY_MAP);
+						Collections.emptyMap());
 				handlerService.executeHandler(command);
 			}
 		});

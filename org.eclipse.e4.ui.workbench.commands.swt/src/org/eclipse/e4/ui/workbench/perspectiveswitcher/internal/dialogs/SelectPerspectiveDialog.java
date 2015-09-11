@@ -72,8 +72,6 @@ public class SelectPerspectiveDialog extends Dialog implements
     
     Object selection;
 
-    private Button showAllButton;
-
     /**
      * PerspectiveDialog constructor comment.
      * 
