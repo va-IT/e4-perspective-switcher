@@ -60,6 +60,7 @@ import org.eclipse.swt.graphics.Region;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swt.widgets.ToolBar;
@@ -266,14 +267,14 @@ public class PerspectiveSwitcherSwtTrim implements IPerspectiveSwitcherControl {
 		final Menu menu = new Menu(toolBar);
 		menu.setData(perspective);
 
-		if (E4Util.isSelectedElement(perspective)) {
-			addSaveAsMenuItem(menu);
-			addResetMenuItem(menu);
-		}
-
-		if (perspective.isVisible()) {
-			addCloseMenuItem(menu);
-		}
+//		if (E4Util.isSelectedElement(perspective)) {
+//			addSaveAsMenuItem(menu);
+//			addResetMenuItem(menu);
+//		}
+//
+//		if (perspective.isVisible()) {
+//			addCloseMenuItem(menu);
+//		}
 
 		new MenuItem(menu, SWT.SEPARATOR);
 
@@ -597,6 +598,11 @@ public class PerspectiveSwitcherSwtTrim implements IPerspectiveSwitcherControl {
 						E4WorkbenchCommandConstants.PERSPECTIVES_SHOW_TEXT,
 						parameters);
 				handlerService.executeHandler(command);
+				
+				// redraw/resize the ToolControl for the Perspectiveswitcher
+				composite.getParent().layout(true, true);
+				composite.redraw();
+				Display.getCurrent().update();
 			}
 		});
 	}
