@@ -96,7 +96,7 @@ public class E4PerspectiveSwitcherProcessor {
 			showTextHandler.setElementId(E4WorkbenchHandlerConstants.PERSPECTIVES_SHOW_TEXT);
 			showTextHandler.setCommand(showTextCommand);
 			showTextHandler.setContributionURI(E4PerspectiveSwitcherActivator.getDefault().getResourceURI(ShowTextHandler.class));
-			application.getHandlers().add(showPerspectiveHandler);
+			application.getHandlers().add(showTextHandler);
 		}
 	}
 	
