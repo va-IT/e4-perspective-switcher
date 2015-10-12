@@ -22,6 +22,7 @@ import org.eclipse.e4.core.commands.EHandlerService;
 import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.Creatable;
+import org.eclipse.e4.core.services.nls.Translation;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
 import org.eclipse.e4.ui.services.IServiceConstants;
@@ -62,6 +63,10 @@ public class SelectPerspectiveDialog extends Dialog implements
 	@Inject
 	private MWindow window;
 	
+	@Inject
+	@Translation
+	private Messages messages;
+	
     final private static int LIST_HEIGHT = 300;
 
     final private static int LIST_WIDTH = 300;
@@ -91,7 +96,7 @@ public class SelectPerspectiveDialog extends Dialog implements
 
     @Override
     protected void configureShell(Shell shell) {
-        shell.setText("Open Perspective");
+        shell.setText(messages.title_dialog_openPerspective);
         setBlockOnOpen(false);
         super.configureShell(shell);
     }

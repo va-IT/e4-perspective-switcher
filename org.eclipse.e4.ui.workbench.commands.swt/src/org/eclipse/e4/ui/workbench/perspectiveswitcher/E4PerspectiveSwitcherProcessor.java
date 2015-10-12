@@ -14,6 +14,7 @@ package org.eclipse.e4.ui.workbench.perspectiveswitcher;
 import javax.inject.Inject;
 
 import org.eclipse.e4.core.di.annotations.Execute;
+import org.eclipse.e4.core.services.nls.Translation;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.eclipse.e4.ui.model.application.commands.MCategory;
 import org.eclipse.e4.ui.model.application.commands.MCommand;
@@ -29,6 +30,7 @@ import org.eclipse.e4.ui.workbench.perspectiveswitcher.handlers.ShowTextHandler;
 public class E4PerspectiveSwitcherProcessor {
 
 	@Inject private MApplication application;
+	@Inject @Translation private E4WorkbenchMessages messages;
 	
 	MCommandsFactory commandsFactory = MCommandsFactory.INSTANCE;
 	
@@ -39,9 +41,9 @@ public class E4PerspectiveSwitcherProcessor {
 		// Perspectives Category definition
 		MCategory perspectivesCategory = commandsFactory.createCategory();
 		perspectivesCategory.setContributorURI(contributorURI);
-		perspectivesCategory.setDescription(E4WorkbenchCommandConstants.CATEGORY_PERSPECTIVES$_DESCRIPTION);
+		perspectivesCategory.setDescription(messages.CATEGORY_PERSPECTIVES$_DESCRIPTION);
 		perspectivesCategory.setElementId(E4WorkbenchCommandConstants.CATEGORY_PERSPECTIVES);
-		perspectivesCategory.setName(E4WorkbenchCommandConstants.CATEGORY_PERSPECTIVES$_NAME);
+		perspectivesCategory.setName(messages.CATEGORY_PERSPECTIVES$_NAME);
 		application.getCategories().add(perspectivesCategory);
 		
 		
@@ -50,16 +52,16 @@ public class E4PerspectiveSwitcherProcessor {
 			showPerspectiveCommand.setContributorURI(contributorURI);
 			showPerspectiveCommand.setElementId(E4WorkbenchCommandConstants.PERSPECTIVES_SHOW_PERSPECTIVE);
 			showPerspectiveCommand.setCategory(perspectivesCategory);
-			showPerspectiveCommand.setCommandName(E4WorkbenchCommandConstants.PERSPECTIVES_SHOW_PERSPECTIVE$_NAME);
-			showPerspectiveCommand.setDescription(E4WorkbenchCommandConstants.PERSPECTIVES_SHOW_PERSPECTIVE$_DESCRIPTION);
+			showPerspectiveCommand.setCommandName(messages.PERSPECTIVES_SHOW_PERSPECTIVE$_NAME);
+			showPerspectiveCommand.setDescription(messages.PERSPECTIVES_SHOW_PERSPECTIVE$_DESCRIPTION);
 			application.getCommands().add(showPerspectiveCommand);
 			
 			MCommand showTextCommand = commandsFactory.createCommand();
 			showTextCommand.setContributorURI(contributorURI);
 			showTextCommand.setElementId(E4WorkbenchCommandConstants.PERSPECTIVES_SHOW_TEXT);
 			showTextCommand.setCategory(perspectivesCategory);
-			showTextCommand.setCommandName(E4WorkbenchCommandConstants.PERSPECTIVES_SHOW_TEXT$_NAME);
-			showTextCommand.setDescription(E4WorkbenchCommandConstants.PERSPECTIVES_SHOW_TEXT$_DESCRIPTION);
+			showTextCommand.setCommandName(messages.PERSPECTIVES_SHOW_TEXT$_NAME);
+			showTextCommand.setDescription(messages.PERSPECTIVES_SHOW_TEXT$_DESCRIPTION);
 			application.getCommands().add(showTextCommand);
 			
 			MCommandParameter parameterPerspectiveId = commandsFactory.createCommandParameter();
