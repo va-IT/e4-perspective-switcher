@@ -70,7 +70,6 @@ public class E4PerspectiveSwitcherProcessor {
 			parameterPerspectiveId.setName(E4WorkbenchParameterConstants.COMMAND_PERSPECTIVE_ID$_NAME);
 			parameterPerspectiveId.setOptional(E4WorkbenchParameterConstants.COMMAND_PERSPECTIVE_ID$_OPTION);
 			showPerspectiveCommand.getParameters().add(parameterPerspectiveId);
-			showTextCommand.getParameters().add(parameterPerspectiveId);
 			
 			MCommandParameter parameterWindow = commandsFactory.createCommandParameter();
 			parameterWindow.setContributorURI(contributorURI);
