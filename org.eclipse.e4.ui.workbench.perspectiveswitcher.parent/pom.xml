@@ -81,4 +81,13 @@
 			../org.eclipse.e4.ui.workbench.perspectiveswitcher.updatesite
 		</module>
 	</modules>
+	<name>e4 Perspectiveswitcher</name>
+	<url>https://github.com/danube-development/e4-perspective-switcher</url>
+	<scm>
+		<url>https://github.com/danube-development/e4-perspective-switcher</url>
+		<developerConnection>https://github.com/danube-development/e4-perspective-switcher.git</developerConnection>
+	</scm>
+	<ciManagement>
+		<system>jenkins</system>
+	</ciManagement>
 </project>
