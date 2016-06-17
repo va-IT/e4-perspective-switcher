@@ -22,6 +22,7 @@ import org.eclipse.e4.ui.model.application.commands.MCommandsFactory;
 import org.eclipse.e4.ui.model.application.commands.MHandler;
 import org.eclipse.e4.ui.workbench.perspectiveswitcher.commands.E4WorkbenchCommandConstants;
 import org.eclipse.e4.ui.workbench.perspectiveswitcher.commands.E4WorkbenchParameterConstants;
+import org.eclipse.e4.ui.workbench.perspectiveswitcher.handlers.CloseHandler;
 import org.eclipse.e4.ui.workbench.perspectiveswitcher.handlers.E4WorkbenchHandlerConstants;
 import org.eclipse.e4.ui.workbench.perspectiveswitcher.handlers.ShowPerspectiveHandler;
 import org.eclipse.e4.ui.workbench.perspectiveswitcher.handlers.ShowTextHandler;
@@ -62,6 +63,14 @@ public class E4PerspectiveSwitcherProcessor {
 			showTextCommand.setDescription(E4WorkbenchCommandConstants.PERSPECTIVES_SHOW_TEXT$_DESCRIPTION);
 			application.getCommands().add(showTextCommand);
 			
+			MCommand closeCommand = commandsFactory.createCommand();
+			closeCommand.setContributorURI(contributorURI);
+			closeCommand.setElementId(E4WorkbenchCommandConstants.PERSPECTIVES_CLOSE);
+			closeCommand.setCategory(perspectivesCategory);
+			closeCommand.setCommandName(E4WorkbenchCommandConstants.PERSPECTIVES_CLOSE$_NAME);
+			closeCommand.setDescription(E4WorkbenchCommandConstants.PERSPECTIVES_CLOSE$_DESCRIPTION);
+			application.getCommands().add(closeCommand);
+			
 			MCommandParameter parameterPerspectiveId = commandsFactory.createCommandParameter();
 			parameterPerspectiveId.setContributorURI(contributorURI);
 			parameterPerspectiveId.setElementId(E4WorkbenchParameterConstants.COMMAND_PERSPECTIVE_ID);
@@ -69,6 +78,7 @@ public class E4PerspectiveSwitcherProcessor {
 			parameterPerspectiveId.setOptional(E4WorkbenchParameterConstants.COMMAND_PERSPECTIVE_ID$_OPTION);
 			showPerspectiveCommand.getParameters().add(parameterPerspectiveId);
 			showTextCommand.getParameters().add(parameterPerspectiveId);
+			closeCommand.getParameters().add(parameterPerspectiveId);
 			
 			MCommandParameter parameterWindow = commandsFactory.createCommandParameter();
 			parameterWindow.setContributorURI(contributorURI);
@@ -97,6 +107,13 @@ public class E4PerspectiveSwitcherProcessor {
 			showTextHandler.setCommand(showTextCommand);
 			showTextHandler.setContributionURI(E4PerspectiveSwitcherActivator.getDefault().getResourceURI(ShowTextHandler.class));
 			application.getHandlers().add(showTextHandler);
+			
+			MHandler closeHandler = commandsFactory.createHandler();
+			closeHandler.setContributorURI(contributorURI);
+			closeHandler.setElementId(E4WorkbenchHandlerConstants.PERSPECTIVES_CLOSE);
+			closeHandler.setCommand(closeCommand);
+			closeHandler.setContributionURI(E4PerspectiveSwitcherActivator.getDefault().getResourceURI(CloseHandler.class));
+			application.getHandlers().add(closeHandler);
 		}
 	}
 	
