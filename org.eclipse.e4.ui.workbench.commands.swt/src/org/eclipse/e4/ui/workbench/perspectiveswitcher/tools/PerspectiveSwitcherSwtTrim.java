@@ -27,6 +27,7 @@ import org.eclipse.e4.core.commands.ECommandService;
 import org.eclipse.e4.core.commands.EHandlerService;
 import org.eclipse.e4.core.di.extensions.Preference;
 import org.eclipse.e4.core.services.log.Logger;
+import org.eclipse.e4.core.services.nls.Translation;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspective;
 import org.eclipse.e4.ui.model.application.ui.advanced.MPerspectiveStack;
 import org.eclipse.e4.ui.model.application.ui.basic.MWindow;
@@ -88,6 +89,10 @@ public class PerspectiveSwitcherSwtTrim implements IPerspectiveSwitcherControl {
 	@Inject
 	EPerspectiveSwitcher perspectiveSwitcher;
 
+	@Inject
+	@Translation
+	private E4WorkbenchMessages messages;
+
 	// TODO: set instance property for the previously active perspective
 	// keep the order for all open perspectives
 
@@ -108,6 +113,7 @@ public class PerspectiveSwitcherSwtTrim implements IPerspectiveSwitcherControl {
 
 	// CSS Styles
 	Color containerCurveColor;
+
 
 	@PreDestroy
 	void cleanUp() {
@@ -200,7 +206,7 @@ public class PerspectiveSwitcherSwtTrim implements IPerspectiveSwitcherControl {
 		ToolItem perspectiveDialog = new ToolItem(toolBar, SWT.PUSH);
 		perspectiveDialog.setImage(getOpenPerspectiveImage());
 		perspectiveDialog
-				.setToolTipText(E4WorkbenchMessages.OpenSelectPerspectiveWindow);
+				.setToolTipText(messages.label_OpenSelectPerspectiveWindow);
 		perspectiveDialog.addSelectionListener(new SelectionAdapter() {
 
 			@Override
@@ -530,7 +536,7 @@ public class PerspectiveSwitcherSwtTrim implements IPerspectiveSwitcherControl {
 
 	private void addSaveAsMenuItem(Menu menu) {
 		final MenuItem menuItem = new MenuItem(menu, SWT.Activate);
-		menuItem.setText(E4WorkbenchCommandConstants.PERSPECTIVES_SAVE_AS$_NAME);
+		menuItem.setText(messages.PERSPECTIVES_SAVE_AS$_NAME);
 
 		// TODO: Integrate into help system
 
@@ -548,7 +554,7 @@ public class PerspectiveSwitcherSwtTrim implements IPerspectiveSwitcherControl {
 
 	private void addResetMenuItem(Menu menu) {
 		final MenuItem menuItem = new MenuItem(menu, SWT.Activate);
-		menuItem.setText(E4WorkbenchCommandConstants.PERSPECTIVES_RESET$_NAME);
+		menuItem.setText(messages.PERSPECTIVES_RESET$_NAME);
 
 		// TODO: Integrate into help system
 
@@ -566,7 +572,7 @@ public class PerspectiveSwitcherSwtTrim implements IPerspectiveSwitcherControl {
 
 	private void addCloseMenuItem(Menu menu) {
 		final MenuItem menuItem = new MenuItem(menu, SWT.Activate);
-		menuItem.setText(E4WorkbenchCommandConstants.PERSPECTIVES_CLOSE$_NAME);
+		menuItem.setText(messages.PERSPECTIVES_CLOSE$_NAME);
 
 		// TODO: Integrate into help system
 
@@ -584,7 +590,7 @@ public class PerspectiveSwitcherSwtTrim implements IPerspectiveSwitcherControl {
 
 	private void addShowTextMenuItem(Menu menu) {
 		final MenuItem menuItem = new MenuItem(menu, SWT.Activate | SWT.CHECK);
-		menuItem.setText(E4WorkbenchCommandConstants.PERSPECTIVES_SHOW_TEXT$_NAME);
+		menuItem.setText(messages.PERSPECTIVES_SHOW_TEXT$_NAME);
 		menuItem.setSelection(showShortcutText);
 
 		// TODO: Integrate into help system
